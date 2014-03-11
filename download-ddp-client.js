@@ -1,3 +1,5 @@
+var getMethodName = '/cfs/files/get';
+
 /*
  * Download Transfer Queue
  */
@@ -40,13 +42,13 @@ DownloadTransferQueue = function downloadTransferQueueConstructor(options) {
  * @param {FS.File} fsFile The file to download.
  * @param {String} [storeName] The store from which to download it.
  * @returns {undefined}
- * 
+ *
  * Adds a chunked download request to the transfer queue. After being downloaded,
  * the browser will save the file like a normal download.
  */
 DownloadTransferQueue.prototype.downloadFile = function dtqDownloadFile(fsFile, storeName) {
   var self = this;
-  
+
   if (!(fsFile instanceof FS.File)) {
     throw new Error("downloadFile: Pass an FS.File instance as the first argument");
   }
@@ -93,7 +95,7 @@ DownloadTransferQueue.prototype.downloadFile = function dtqDownloadFile(fsFile, 
  * @param {FS.File} fsFile The file
  * @param {String} storeName The name of the store to retrieve from
  * @returns {Number} Progress percentage
- * 
+ *
  * Reactive status percent for the queue in total or a specific file
  */
 DownloadTransferQueue.prototype.progress = function dtqProgress(fsFile, storeName) {
@@ -114,7 +116,7 @@ DownloadTransferQueue.prototype.progress = function dtqProgress(fsFile, storeNam
  * @method DownloadTransferQueue.prototype.cancel
  * @public
  * @returns {undefined}
- * 
+ *
  * Cancel all downloads.
  */
 DownloadTransferQueue.prototype.cancel = function dtqCancel() {
@@ -129,7 +131,7 @@ DownloadTransferQueue.prototype.cancel = function dtqCancel() {
  * @param {FS.File} fsFile
  * @param {String} storeName
  * @returns {Boolean} Are we currently downloading this file from this store?
- * 
+ *
  * Determines whether we are currently downloading this file from this store.
  */
 DownloadTransferQueue.prototype.isDownloadingFile = function dtqIsDownloadingFile(fsFile, storeName) {
@@ -181,7 +183,7 @@ function unCacheDownload(col, fsFile, storeName, callback) {
  * @param {String} storeName
  * @param {Number} start
  * @returns {undefined}
- * 
+ *
  * Downloading is a bit different from uploading. We cache data as it comes back
  * rather than before making the method calls.
  */
@@ -191,9 +193,9 @@ function downloadChunk(tQueue, fsFile, storeName, start) {
     cacheDownload(tQueue.collection, fsFile, storeName, start, function(err) {
       tQueue.queue.add(function(complete) {
         FS.debug && console.log("downloading bytes starting from " + start);
-        //tQueue.connection.apply(FS.AccessPoint.DDP.get,
+        //tQueue.connection.apply(getMethodName,
         //XXX using Meteor.apply for now because login isn't working
-        Meteor.apply(FS.AccessPoint.DDP.get,
+        Meteor.apply(getMethodName,
                 [fsFile, storeName, start, start + chunkSize],
                 {
                   onResultReceived: function(err, data) {
@@ -260,7 +262,7 @@ function addDownloadedData(col, fsFile, storeName, start, data, callback) {
  * @namespace FS
  * @public
  * @type DownloadTransferQueue
- * 
+ *
  * There is a single downloads transfer queue per client (not per CFS)
  */
 FS.downloadQueue = new DownloadTransferQueue();

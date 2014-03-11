@@ -17,6 +17,14 @@
 		"reactive-list": {
 			"git": "https://github.com/CollectionFS/Meteor-reactive-list.git",
 			"branch": "master"
+		},
+		"cfs-file": {
+			"git": "https://github.com/CollectionFS/Meteor-cfs-file.git",
+			"branch": "master"
+		},
+		"cfs-ejson-file": {
+			"git": "https://github.com/CollectionFS/Meteor-cfs-ejson-file.git",
+			"branch": "master"
 		}
 	}
 }
