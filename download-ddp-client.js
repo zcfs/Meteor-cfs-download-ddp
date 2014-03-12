@@ -248,8 +248,8 @@ function addDownloadedData(col, fsFile, storeName, start, data, callback) {
     if (totalChunks === cnt) {
       // All chunks have been downloaded into the cache
       // Save combined data
-      fsFile.setDataFromBinary(bin);
-      fsFile.saveLocal(fsFile.copies[storeName].name);
+      fsFile.attachData(bin);
+      fsFile.data.saveAs(fsFile.copies[storeName].name);
       // Now that we've saved it, clear the cache
       unCacheDownload(col, fsFile, storeName, callback);
     } else {
