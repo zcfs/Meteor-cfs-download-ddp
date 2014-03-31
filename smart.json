@@ -3,7 +3,7 @@
 	"description": "CollectionFS, ddp download transfer",
 	"homepage": "https://github.com/CollectionFS/Meteor-cfs-download-ddp",
 	"author": "CollectionFS core @aldeed & @raix",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"git": "https://github.com/CollectionFS/Meteor-cfs-download-ddp.git",
 	"packages": {
 		"cfs-base-package": {},
