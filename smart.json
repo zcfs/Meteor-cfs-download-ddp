@@ -1,10 +1,10 @@
 {
 	"name": "cfs-download-ddp",
 	"description": "CollectionFS, ddp download transfer",
-	"homepage": "https://github.com/CollectionFS/Meteor-cfs-download-ddp",
+	"homepage": "https://github.com/zcfs/Meteor-cfs-download-ddp",
 	"author": "CollectionFS core @aldeed & @raix",
 	"version": "0.0.3",
-	"git": "https://github.com/CollectionFS/Meteor-cfs-download-ddp.git",
+	"git": "https://github.com/zcfs/Meteor-cfs-download-ddp.git",
 	"packages": {
 		"cfs-base-package": {},
 		"power-queue": {},

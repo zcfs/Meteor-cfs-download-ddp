@@ -9,7 +9,7 @@ This package is to be archived due to inability to find contributors, thanks to 
 ---
 
 This is a Meteor package that can be used with
-[CollectionFS](https://github.com/CollectionFS/Meteor-CollectionFS).
+[CollectionFS](https://github.com/zcfs/Meteor-CollectionFS).
 
 We recommend simply downloading over HTTP using the URL returned by
 `FS.File.prototype.url` when you set the `download` option to true. However,
